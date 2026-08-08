@@ -1,0 +1,52 @@
+{
+  "_leia": "ARQUIVO DE EXEMPLO — substitua pelos dados reais ou apague.",
+
+  "publicado": true,
+  "destaque": false,
+  "status": "disponivel",
+
+  "titulo": "EXEMPLO — Fazenda Vale do Jalapão",
+  "subtitulo": "Projeto de reflorestamento e crédito de carbono em área de cerrado preservado",
+  "tipo": "reflorestamento",
+
+  "municipio": "Mateiros",
+  "estado": "TO",
+  "regiao": "Jalapão",
+
+  "area_total_ha": 5200,
+  "area_aberta_ha": 900,
+  "area_reserva_ha": 4300,
+
+  "preco": 41600000,
+  "preco_sob_consulta": false,
+
+  "descricao": "Área com vocação para projetos de reflorestamento, conservação e geração de ativos ambientais, em uma das regiões de cerrado mais preservadas do país. Perfil adequado a investidores com tese de longo prazo e foco em ESG.\n\nA propriedade possui documentação regular e passivo ambiental zero, condição essencial para habilitação em programas de crédito de carbono.",
+
+  "caracteristicas": [
+    "Cerrado nativo em excelente estado de conservação",
+    "Passivo ambiental zero",
+    "Aptidão para projeto de carbono e REDD+",
+    "Corpos d'água preservados",
+    "Alta atratividade para turismo de natureza"
+  ],
+
+  "infraestrutura": [
+    "Casa sede simples",
+    "Acesso por estrada de terra em bom estado",
+    "Energia solar isolada"
+  ],
+
+  "documentacao": [
+    "Matrícula individualizada",
+    "CAR ativo e validado",
+    "CCIR e ITR em dia",
+    "Reserva legal averbada e excedente de vegetação nativa"
+  ],
+
+  "certificacao_ambiental": true,
+
+  "mapa_embed": "",
+  "fotos": [],
+  "pasta_fotos": "",
+  "video_youtube": ""
+}

@@ -1,0 +1,179 @@
+{
+  "_leia": "Todo o texto institucional do site mora aqui. Editar aqui muda o site — nenhum texto está preso no código. Parágrafos: separe com \\n\\n dentro da string, ou use uma lista de strings.",
+
+  "home": {
+    "hero_titulo": "Conectando pessoas à terra, à natureza e à prosperidade.",
+    "hero_texto": "Intermediação de fazendas e propriedades rurais no Tocantins e no Matopiba, com due diligence técnica, jurídica e ambiental em cada negócio.",
+    "hero_cta": "Conheça nossas oportunidades",
+    "hero_cta_secundario": "Falar com um especialista",
+
+    "pilares": [
+      {
+        "titulo": "Documentação verificada",
+        "texto": "Nenhuma propriedade entra no nosso portfólio sem matrícula limpa, CAR validado e georreferenciamento aprovado. Regularidade não é diferencial: é pré-requisito."
+      },
+      {
+        "titulo": "Consultoria do início ao fim",
+        "texto": "Da prospecção à escritura, com assessoria jurídica e suporte técnico. Você não compra sozinho e não descobre problema depois de assinar."
+      },
+      {
+        "titulo": "Rede nacional e internacional",
+        "texto": "Compradores, produtores e investidores no Brasil e no exterior. Quem vende encontra liquidez; quem compra encontra oportunidade real."
+      },
+      {
+        "titulo": "Conhecimento de região",
+        "texto": "Atuação concentrada no Tocantins e no Matopiba. Conhecemos solo, logística e preço praticado microrregião por microrregião."
+      }
+    ],
+
+    "faixa_titulo": "Terra é decisão de longo prazo. Merece análise de longo prazo.",
+    "faixa_texto": "Trabalhamos com um portfólio enxuto e verificado, não com volume. Cada oportunidade que apresentamos passou por análise documental, ambiental e de mercado."
+  },
+
+  "sobre": {
+    "titulo": "Sobre a Prime Fazendas",
+    "chamada": "Especialistas em fazendas e propriedades rurais no coração do Brasil.",
+
+    "quem_somos": [
+      "A Prime Fazendas é uma imobiliária especializada na venda de fazendas e propriedades rurais, localizada no Tocantins — uma região estratégica, com logística privilegiada e um dos maiores potenciais de crescimento do agronegócio no país.",
+      "Com uma equipe qualificada e uma rede de contatos estratégica, oferecemos um portfólio exclusivo de fazendas, sítios e propriedades rurais voltadas para investimento, produção agrícola, pecuária, reflorestamento e lazer. Nossa experiência no setor nos permite identificar os melhores ativos, garantindo segurança, transparência e potencial de valorização para nossos clientes."
+    ],
+
+    "historia_titulo": "A história",
+    "historia": [
+      "A Prime Fazendas nasceu da trajetória de um empreendedor que sempre esteve ligado ao mercado imobiliário. Aos 18 anos, André Amorim iniciou sua carreira como corretor de imóveis, destacando-se pelo talento para negociações e pela visão estratégica no setor.",
+      "Com espírito inquieto, expandiu seus horizontes e se aventurou em novos negócios, sempre mantendo forte conexão com o setor imobiliário. Foi então que, aos 24 anos, sua jornada o levou ao Tocantins, o coração do Brasil. O encanto pela vastidão das fazendas, a riqueza natural da região e o potencial do agronegócio o fizeram enxergar novas oportunidades — não apenas de negócios, mas de um propósito maior.",
+      "A conexão com a terra foi crescendo de forma natural. Até a história pessoal reflete essa ligação: foi através de uma negociação imobiliária que conheceu sua esposa, em mais um exemplo de como os imóveis sempre foram um elo de prosperidade e conexão em sua vida.",
+      "Dessa paixão nasceu a Prime Fazendas, uma imobiliária especializada na venda de fazendas, com um compromisso claro: oferecer oportunidades sólidas e estratégicas para investidores e produtores rurais, sempre com excelência e respeito à natureza."
+    ],
+
+    "diferenciais_titulo": "Nosso diferencial",
+    "diferenciais_texto": "Adquirir uma propriedade rural vai muito além da compra de terras — é a expansão de um patrimônio e o início de novas oportunidades. Por isso oferecemos consultoria completa e personalizada, da prospecção à finalização da negociação, com assessoria jurídica e suporte técnico.",
+    "diferenciais": [
+      {
+        "titulo": "Excelência e segurança",
+        "texto": "Transparência total e rigor jurídico, assegurando negociações sólidas e sem riscos."
+      },
+      {
+        "titulo": "Rede estratégica",
+        "texto": "Ampla rede de compradores e investidores no Brasil e no exterior, facilitando transações rápidas e eficazes."
+      },
+      {
+        "titulo": "Expertise de mercado",
+        "texto": "Conhecimento profundo do setor para identificar as melhores oportunidades e maximizar o retorno do investimento."
+      },
+      {
+        "titulo": "Atendimento personalizado",
+        "texto": "Soluções sob medida para cada tipo de empreendimento rural, respeitando as necessidades de cada cliente."
+      }
+    ],
+
+    "missao_titulo": "Nossa missão",
+    "missao": "Transformar a experiência de compra e venda de fazendas em um processo ágil, seguro e rentável, promovendo o desenvolvimento do agronegócio e contribuindo para o crescimento sustentável do setor. Buscamos não apenas realizar negócios, mas construir relacionamentos de longo prazo baseados em confiança, ética e compromisso com a satisfação de nossos clientes.",
+
+    "valores": [
+      "Transparência e ética em cada negociação",
+      "Compromisso com a sustentabilidade e a legalidade",
+      "Relacionamento de longo prazo acima da transação",
+      "Respeito à terra, à natureza e a quem vive dela"
+    ]
+  },
+
+  "servicos": {
+    "titulo": "Nossos serviços",
+    "chamada": "Do primeiro contato à escritura, com quem entende de terra e de documento.",
+    "lista": [
+      {
+        "titulo": "Intermediação na compra e venda de fazendas",
+        "texto": "Conduzimos a negociação do início ao fim, com análise criteriosa do ativo, verificação documental e suporte estratégico nas tratativas. Nosso papel é fechar bem, não apenas fechar."
+      },
+      {
+        "titulo": "Avaliação e consultoria imobiliária rural",
+        "texto": "Análise de valor de mercado considerando solo, aptidão produtiva, recursos hídricos, logística, infraestrutura e situação documental. Você descobre o valor real da propriedade — e o que fazer para aumentá-lo."
+      },
+      {
+        "titulo": "Regularização fundiária e ambiental",
+        "texto": "Diagnóstico e condução da regularização: matrícula, georreferenciamento, CAR, reserva legal e passivos. Propriedade regular negocia mais rápido, aceita financiamento e vale mais."
+      },
+      {
+        "titulo": "Captação de investidores",
+        "texto": "Conexão com investidores nacionais e internacionais que buscam ativos reais no agronegócio brasileiro, com o nível de compliance que esse público exige."
+      },
+      {
+        "titulo": "Parcerias estratégicas no setor agro",
+        "texto": "Rede de parceiros em crédito rural, tecnologia agrícola, topografia, engenharia e assessoria jurídica, para soluções completas a compradores e vendedores."
+      }
+    ],
+    "cta_titulo": "Cada propriedade é um caso.",
+    "cta_texto": "Conte o que você quer comprar, vender ou regularizar e montamos o caminho.",
+    "cta_botao": "Solicitar consultoria"
+  },
+
+  "investir": {
+    "titulo": "Por que investir no agronegócio",
+    "chamada": "Ativo real, finito e produtivo — na fronteira agrícola que ainda está sendo consolidada.",
+    "intro": "O Brasil é uma das maiores potências agrícolas do mundo e o agronegócio responde por uma fatia relevante do PIB nacional. Investir em terra agrícola é combinar valorização de ativo real com geração de renda — desde que a propriedade escolhida seja tecnicamente boa e juridicamente limpa.",
+    "regiao_titulo": "Tocantins e Matopiba: por que aqui",
+    "fechamento_titulo": "Regularidade é o que separa oportunidade de armadilha",
+    "fechamento_texto": "Área com pendência registral ou ambiental parece barata e sai caro: não aceita financiamento, alonga o fechamento e carrega passivo que acompanha o imóvel, não o vendedor anterior. Toda propriedade do nosso portfólio passa por verificação antes de ser apresentada."
+  },
+
+  "imoveis": {
+    "titulo": "Imóveis rurais à venda",
+    "chamada": "Portfólio enxuto e verificado. Cada propriedade passou por análise documental, ambiental e de mercado.",
+    "vazio_titulo": "Portfólio em atualização",
+    "vazio_texto": "Estamos preparando as próximas oportunidades. Se você procura algo específico — região, tamanho, aptidão ou faixa de investimento — fale com a nossa equipe: boa parte das nossas negociações acontece antes do anúncio."
+  },
+
+  "comunidade": {
+    "titulo": "Comunidade Prime Agro",
+    "chamada": "O ponto de encontro de quem investe, produz e vive do agro no coração do Brasil.",
+    "intro": "A Comunidade Prime Agro é o nosso canal direto com produtores, investidores, corretores parceiros e curiosos sérios sobre o mercado de terras. Sem ruído e sem correntes: informação de mercado, oportunidades antes do anúncio público e conversa com quem está no campo.",
+    "beneficios": [
+      {
+        "titulo": "Oportunidades antes do anúncio",
+        "texto": "Propriedades novas do portfólio circulam primeiro na comunidade, antes de entrar no site."
+      },
+      {
+        "titulo": "Leitura de mercado",
+        "texto": "Preço por hectare praticado, movimentos de safra e o que está de fato acontecendo nas microrregiões onde atuamos."
+      },
+      {
+        "titulo": "Rede de parceiros",
+        "texto": "Corretores, topógrafos, advogados, agrônomos e produtores trocando indicação e resolvendo problema real."
+      },
+      {
+        "titulo": "Conteúdo técnico direto",
+        "texto": "Documentação, regularização e due diligence explicados por quem faz, sem juridiquês."
+      }
+    ],
+    "regras_titulo": "Como funciona",
+    "regras": [
+      "Entrada gratuita e mediada — pedimos apenas que você diga quem é e o que busca.",
+      "Espaço para negócio e informação. Spam, corrente e oferta fora do escopo não passam.",
+      "Anúncio de propriedade por membros é bem-vindo, desde que com dados reais e documentação declarada."
+    ],
+    "cta_titulo": "Quero entrar na comunidade",
+    "cta_texto": "Entre pelo grupo de WhatsApp ou deixe seu e-mail para receber as oportunidades e a leitura de mercado."
+  },
+
+  "blog": {
+    "titulo": "Blog e insights",
+    "chamada": "Mercado de terras, regularização e investimento no agro — explicado por quem opera.",
+    "vazio_titulo": "Em breve",
+    "vazio_texto": "Estamos preparando os primeiros conteúdos."
+  },
+
+  "contato": {
+    "titulo": "Contato e consultoria",
+    "chamada": "Conte o que você procura. Um especialista responde.",
+    "intro": "Seja para comprar, vender, avaliar ou regularizar uma propriedade rural, o primeiro passo é uma conversa. Sem compromisso e sem discurso de vendas.",
+    "form_titulo": "Fale com um especialista",
+    "form_nota": "Seus dados são usados exclusivamente para o retorno do contato."
+  },
+
+  "rodape": {
+    "sobre_curto": "Imobiliária especializada em fazendas e propriedades rurais no Tocantins e no Matopiba. Intermediação com due diligence técnica, jurídica e ambiental.",
+    "aviso_legal": "As informações sobre propriedades têm caráter informativo e não constituem oferta vinculante. Valores, áreas e características estão sujeitos a confirmação em due diligence. Este site não presta consultoria de investimento."
+  }
+}

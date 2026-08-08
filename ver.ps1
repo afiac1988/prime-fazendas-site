@@ -1,0 +1,61 @@
+# =============================================================================
+#  Prime Fazendas — VER O SITE NO COMPUTADOR (sem publicar nada)
+#
+#  Uso:  .\ver.ps1
+#
+#  Gera o site a partir de conteudo/ e abre no navegador em http://127.0.0.1:8099
+#  Nada sai do seu computador. Pode rodar quantas vezes quiser.
+# =============================================================================
+
+$ErrorActionPreference = 'Stop'
+$raiz = $PSScriptRoot
+Set-Location $raiz
+
+$porta = 8099
+
+function Achar-Python {
+    foreach ($c in @('python', 'py', 'C:\Python314\python.exe')) {
+        $cmd = Get-Command $c -ErrorAction SilentlyContinue
+        if ($cmd) { return $cmd.Source }
+    }
+    return $null
+}
+
+$python = Achar-Python
+if (-not $python) {
+    Write-Host ""
+    Write-Host "  Python nao encontrado." -ForegroundColor Red
+    Write-Host "  Instale em https://www.python.org/downloads/ marcando 'Add to PATH'."
+    Write-Host ""
+    exit 1
+}
+
+$env:PYTHONUTF8 = '1'
+$env:PYTHONIOENCODING = 'utf-8'
+
+Write-Host ""
+Write-Host "  Gerando o site..." -ForegroundColor Cyan
+& $python "$raiz\build.py"
+$codigo = $LASTEXITCODE
+
+if ($codigo -ne 0) {
+    Write-Host "  (ha bloqueios acima — para ver localmente tudo bem, mas o publicar.ps1 vai recusar)" -ForegroundColor Yellow
+}
+
+# Derruba um servidor antigo na mesma porta, se houver
+$emUso = Get-NetTCPConnection -LocalPort $porta -State Listen -ErrorAction SilentlyContinue
+if ($emUso) {
+    foreach ($c in $emUso) {
+        try { Stop-Process -Id $c.OwningProcess -Force -ErrorAction SilentlyContinue } catch {}
+    }
+    Start-Sleep -Milliseconds 400
+}
+
+Write-Host "  Servindo em http://127.0.0.1:$porta" -ForegroundColor Green
+Write-Host "  Feche esta janela (ou Ctrl+C) para parar." -ForegroundColor DarkGray
+Write-Host ""
+
+Start-Process "http://127.0.0.1:$porta"
+
+Set-Location "$raiz\site"
+& $python -m http.server $porta --bind 127.0.0.1

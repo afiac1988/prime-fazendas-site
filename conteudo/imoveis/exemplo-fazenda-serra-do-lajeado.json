@@ -1,0 +1,55 @@
+{
+  "_leia": "ARQUIVO DE EXEMPLO — serve para você ver como o site fica. Substitua pelos dados reais ou apague. O publicar.ps1 se recusa a subir enquanto existir 'EXEMPLO' num imóvel publicado.",
+
+  "publicado": true,
+  "destaque": true,
+  "status": "disponivel",
+
+  "titulo": "EXEMPLO — Fazenda Serra do Lajeado",
+  "subtitulo": "Área consolidada de soja a 40 km de Palmas, com logística privilegiada",
+  "tipo": "agricola",
+
+  "municipio": "Palmas",
+  "estado": "TO",
+  "regiao": "Matopiba",
+
+  "area_total_ha": 2400,
+  "area_aberta_ha": 1780,
+  "area_reserva_ha": 620,
+
+  "preco": 96000000,
+  "preco_sob_consulta": false,
+
+  "descricao": "Propriedade consolidada em plena produção de soja, com solo corrigido e histórico de produtividade acima da média regional. A localização, a menos de uma hora de Palmas, garante acesso rápido a insumos, mão de obra qualificada e aos principais corredores de escoamento.\n\nA área conta com documentação completa e georreferenciamento aprovado, o que viabiliza financiamento bancário e reduz drasticamente o prazo de fechamento da negociação.",
+
+  "caracteristicas": [
+    "Solo corrigido, com histórico de 60+ sacas/ha",
+    "Topografia plana a suave ondulada",
+    "Chapada com aptidão para irrigação por pivô",
+    "Duas nascentes e córrego perene",
+    "Acesso por estrada vicinal em bom estado"
+  ],
+
+  "infraestrutura": [
+    "Sede com casa principal e alojamento",
+    "Dois galpões de máquinas",
+    "Silo com capacidade para 3.000 toneladas",
+    "Energia trifásica em toda a sede",
+    "Poço artesiano outorgado"
+  ],
+
+  "documentacao": [
+    "Matrícula individualizada e livre de ônus",
+    "CAR ativo e validado",
+    "CCIR e ITR em dia",
+    "Georreferenciamento aprovado no INCRA",
+    "Reserva legal averbada"
+  ],
+
+  "certificacao_ambiental": true,
+
+  "mapa_embed": "",
+  "fotos": [],
+  "pasta_fotos": "",
+  "video_youtube": ""
+}

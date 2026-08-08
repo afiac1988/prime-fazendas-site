@@ -1,0 +1,54 @@
+{
+  "_leia": "ARQUIVO DE EXEMPLO — substitua pelos dados reais ou apague.",
+
+  "publicado": true,
+  "destaque": true,
+  "status": "disponivel",
+
+  "titulo": "EXEMPLO — Fazenda Rio Formoso",
+  "subtitulo": "Pecuária de cria e recria com pastagem formada e abundância de água",
+  "tipo": "pecuaria",
+
+  "municipio": "Formoso do Araguaia",
+  "estado": "TO",
+  "regiao": "Vale do Araguaia",
+
+  "area_total_ha": 3800,
+  "area_aberta_ha": 2900,
+  "area_reserva_ha": 900,
+
+  "preco": 0,
+  "preco_sob_consulta": true,
+
+  "descricao": "Fazenda voltada à pecuária de cria e recria, com pastagem formada e dividida em piquetes, suporte estimado de 1,2 UA/ha e água em todos os módulos. Estrutura de manejo completa e pronta para operar.\n\nOportunidade indicada para quem busca escala em uma região com forte tradição pecuária e potencial de conversão parcial para lavoura.",
+
+  "caracteristicas": [
+    "Pastagem formada em brachiaria e mombaça",
+    "Divisão em 18 piquetes com água em todos",
+    "Suporte estimado de 1,2 UA/ha",
+    "Extensa frente para o rio",
+    "Potencial de abertura para lavoura em parte da área"
+  ],
+
+  "infraestrutura": [
+    "Sede, casa de funcionários e escritório",
+    "Tronco de contenção e balança",
+    "Curral coberto com brete e embarcador",
+    "Energia da rede e gerador de apoio",
+    "Cercas em bom estado de conservação"
+  ],
+
+  "documentacao": [
+    "Matrícula individualizada",
+    "CAR ativo",
+    "CCIR e ITR em dia",
+    "Georreferenciamento aprovado no INCRA"
+  ],
+
+  "certificacao_ambiental": true,
+
+  "mapa_embed": "",
+  "fotos": [],
+  "pasta_fotos": "",
+  "video_youtube": ""
+}

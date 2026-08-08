@@ -1,0 +1,59 @@
+{
+  "_leia": "MODELO — copie este arquivo, renomeie (ex: fazenda-boa-vista.json) e preencha. Arquivos que começam com _ são ignorados pelo gerador. O nome do arquivo vira o endereço: fazenda-boa-vista.json -> /imoveis/fazenda-boa-vista/",
+
+  "publicado": false,
+  "destaque": false,
+  "status": "disponivel",
+  "_status_opcoes": "disponivel | reservado | vendido",
+
+  "titulo": "Fazenda Nome da Propriedade",
+  "subtitulo": "Uma linha que vende a oportunidade",
+  "tipo": "agricola",
+  "_tipo_opcoes": "agricola | pecuaria | mista | reflorestamento | lazer",
+
+  "municipio": "Cidade",
+  "estado": "TO",
+  "regiao": "Matopiba",
+
+  "area_total_ha": 0,
+  "area_aberta_ha": 0,
+  "area_reserva_ha": 0,
+
+  "preco": 0,
+  "_preco": "Valor total em reais, só número. Use 0 para 'consulte-nos'.",
+  "preco_sob_consulta": false,
+
+  "descricao": "Texto corrido apresentando a propriedade. Pode usar mais de um parágrafo separando com uma linha em branco.",
+
+  "caracteristicas": [
+    "Solo de alta fertilidade",
+    "Topografia plana",
+    "Recurso hídrico abundante"
+  ],
+
+  "infraestrutura": [
+    "Sede com casa principal",
+    "Galpão de máquinas",
+    "Energia trifásica"
+  ],
+
+  "documentacao": [
+    "Matrícula individualizada",
+    "CAR ativo",
+    "CCIR e ITR em dia",
+    "Georreferenciamento aprovado no INCRA"
+  ],
+
+  "certificacao_ambiental": true,
+
+  "mapa_embed": "",
+  "_mapa_embed": "Opcional. Cole aqui a URL do 'src' do iframe do Google Maps (Compartilhar > Incorporar um mapa).",
+
+  "fotos": [],
+  "_fotos": "Nomes dos arquivos que você colocou em conteudo/midia/imoveis/<pasta-do-imovel>/. Ex: [\"aerea-01.jpg\", \"sede.jpg\"]. A primeira foto é a capa.",
+  "pasta_fotos": "",
+  "_pasta_fotos": "Nome da subpasta dentro de conteudo/midia/imoveis/. Se vazio, usa o nome do arquivo json.",
+
+  "video_youtube": "",
+  "_video_youtube": "Opcional. Só o ID do vídeo, ex: dQw4w9WgXcQ"
+}

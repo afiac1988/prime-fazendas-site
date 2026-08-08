@@ -1,0 +1,71 @@
+{
+  "_leia": "Painel de controle do site. Edite os valores, salve, rode publicar.ps1. Campos com 'PREENCHER' precisam dos dados reais antes de ir ao ar.",
+
+  "marca": {
+    "nome": "Prime Fazendas",
+    "slogan": "Conectando pessoas à terra, à natureza e à prosperidade.",
+    "descricao_curta": "Imobiliária especializada na venda de fazendas e propriedades rurais no Tocantins, coração do agronegócio brasileiro.",
+    "fundador": "André Amorim",
+    "ano_fundacao": "2025"
+  },
+
+  "site": {
+    "dominio": "https://primefazendas.com",
+    "idioma": "pt-BR",
+    "titulo_padrao": "Prime Fazendas — Fazendas e propriedades rurais no Tocantins",
+    "descricao_padrao": "Intermediação de fazendas certificadas e documentadas no Tocantins e Matopiba. Consultoria completa, segurança jurídica e oportunidades de investimento no agronegócio.",
+    "og_imagem": "/assets/og-prime-fazendas.png"
+  },
+
+  "contato": {
+    "telefone": "PREENCHER",
+    "telefone_link": "PREENCHER",
+    "whatsapp": "PREENCHER",
+    "whatsapp_numero_internacional": "PREENCHER",
+    "whatsapp_mensagem": "Olá! Vim pelo site da Prime Fazendas e gostaria de falar com um especialista.",
+    "email": "contato@primefazendas.com",
+    "endereco": "PREENCHER",
+    "cidade": "Palmas",
+    "estado": "TO",
+    "pais": "BR",
+    "creci": "PREENCHER",
+    "horario": "Segunda a sexta, 8h às 18h"
+  },
+
+  "redes": {
+    "instagram": "PREENCHER",
+    "linkedin": "PREENCHER",
+    "youtube": "",
+    "facebook": ""
+  },
+
+  "formulario": {
+    "_leia": "Endpoint que recebe os envios do formulário. Deixe vazio para o formulário cair no WhatsApp (modo padrão, funciona sem servidor).",
+    "endpoint": "",
+    "modo": "whatsapp"
+  },
+
+  "analytics": {
+    "_leia": "Cole aqui o ID do Google Analytics 4 (formato G-XXXXXXX). Vazio = nenhum script de rastreio é injetado.",
+    "ga4_id": ""
+  },
+
+  "comunidade": {
+    "nome": "Comunidade Prime Agro",
+    "chamada": "O ponto de encontro de quem investe, produz e vive do agro no coração do Brasil.",
+    "grupo_whatsapp": "PREENCHER",
+    "canal_whatsapp": "",
+    "newsletter_ativa": true
+  },
+
+  "navegacao": [
+    { "titulo": "Início", "url": "/" },
+    { "titulo": "Sobre Nós", "url": "/sobre/" },
+    { "titulo": "Serviços", "url": "/servicos/" },
+    { "titulo": "Imóveis", "url": "/imoveis/" },
+    { "titulo": "Investir no Agro", "url": "/investir-no-agro/" },
+    { "titulo": "Comunidade", "url": "/comunidade/" },
+    { "titulo": "Blog", "url": "/blog/" },
+    { "titulo": "Contato", "url": "/contato/" }
+  ]
+}

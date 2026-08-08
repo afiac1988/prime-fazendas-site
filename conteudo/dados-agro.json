@@ -1,0 +1,58 @@
+{
+  "_leia": "Todo número que aparece no site sai daqui, com fonte e ano. Motivo: número sem fonte em site de imobiliária é passivo — se um investidor cobrar, você tem que ter de onde tirou. Revise a cada safra. Se um item tiver 'verificar': true, ele NÃO é exibido no site até você confirmar e trocar para false.",
+
+  "indicadores": [
+    {
+      "valor": "~24%",
+      "rotulo": "do PIB brasileiro vem do agronegócio",
+      "fonte": "Cepea/USP em parceria com a CNA",
+      "ano": "2024",
+      "url": "https://www.cepea.esalq.usp.br/br/pib-do-agronegocio-brasileiro.aspx",
+      "verificar": true,
+      "_nota": "O pico histórico foi 27,4% em 2021 e a série recuou depois. Confirme o número da última divulgação do Cepea antes de publicar."
+    },
+    {
+      "valor": "1º",
+      "rotulo": "maior exportador mundial de soja, café, açúcar e carne bovina",
+      "fonte": "USDA / Comex Stat",
+      "ano": "2025",
+      "url": "https://comexstat.mdic.gov.br/",
+      "verificar": true
+    },
+    {
+      "valor": "Matopiba",
+      "rotulo": "última grande fronteira agrícola do país, com o Tocantins no centro",
+      "fonte": "Embrapa",
+      "ano": "2024",
+      "url": "https://www.embrapa.br/tema-matopiba",
+      "verificar": true
+    }
+  ],
+
+  "argumentos_investimento": [
+    {
+      "titulo": "Valorização de longo prazo",
+      "texto": "Terra agrícola é ativo real, finito e com histórico consistente de valorização acompanhando a produtividade da região. Em fronteiras agrícolas em consolidação, como o Matopiba, o ganho vem da soma de valorização e produção."
+    },
+    {
+      "titulo": "Renda e produção no mesmo ativo",
+      "texto": "Diferente de um ativo puramente especulativo, a fazenda gera receita — própria, por arrendamento ou por parceria agrícola — enquanto se valoriza."
+    },
+    {
+      "titulo": "Proteção patrimonial",
+      "texto": "Ativo real, de baixa correlação com o mercado financeiro e com histórico de preservação de valor em ciclos de inflação."
+    },
+    {
+      "titulo": "Segurança jurídica como diferencial de preço",
+      "texto": "Propriedade com matrícula limpa, CAR validado e georreferenciamento aprovado negocia mais rápido, aceita financiamento bancário e vale mais do que área equivalente com pendências. Regularidade é valor, não burocracia."
+    }
+  ],
+
+  "fatores_regiao": [
+    "Logística conectada aos corredores Norte e ao Arco Norte",
+    "Solo e clima com aptidão para soja, milho, algodão e pecuária",
+    "Custo por hectare ainda abaixo das regiões consolidadas do Centro-Sul",
+    "Base tecnológica e serviços agrícolas em expansão",
+    "Disponibilidade hídrica e potencial de irrigação"
+  ]
+}

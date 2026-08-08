@@ -1,0 +1,27 @@
+# Credenciais — NUNCA versionar
+deploy.local.json
+*.local.json
+.env
+
+# Saída gerada pelo build (o site é reconstruído a partir de conteudo/)
+/site/
+
+# Sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Logs e temporários
+/logs/
+*.log
+*.tmp
+*.bak
