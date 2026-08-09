@@ -704,6 +704,24 @@ strong { font-weight: 600; color: var(--azul-900); }
 .zap:hover { transform: scale(1.07); color: #fff; box-shadow: 0 10px 28px rgba(12, 30, 51, 0.36); }
 .zap svg { width: 28px; height: 28px; fill: currentColor; }
 
+/* ------------------------------------------------- Alvos de toque -------- */
+/* No celular, link de 18px de altura e quase impossivel de acertar com o
+   polegar. A WCAG 2.5.8 exige 24px no minimo e recomenda 44px. Abaixo de
+   720px de largura os links de texto ganham area de toque de verdade. */
+
+@media (max-width: 720px) {
+  .rodape__lista a,
+  .link-seta,
+  .migalhas a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .rodape__lista { gap: 0; }
+  .filtro { min-height: 44px; }
+  .contato-item__val a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
 /* ------------------------------------------------------------ Migalhas --- */
 
 .migalhas { font-size: 0.82rem; color: var(--tinta-suave); margin-bottom: 1.5rem; }
