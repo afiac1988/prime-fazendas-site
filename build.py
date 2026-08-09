@@ -176,6 +176,7 @@ def markdown(texto: str) -> str:
     lista: list[str] = []
     tipo_lista = None
     citacao: list[str] = []
+    tabela: list[str] = []
 
     def fecha_p():
         nonlocal buffer_p
@@ -198,10 +199,38 @@ def markdown(texto: str) -> str:
             saida.append("<blockquote>" + md_inline(" ".join(citacao)) + "</blockquote>")
             citacao = []
 
+    def fecha_tabela():
+        nonlocal tabela
+        if not tabela:
+            return
+        linhas_tab = [l for l in tabela if not re.match(r"^\s*\|?[\s:|-]+\|?\s*$", l)]
+        if linhas_tab:
+            def celulas(linha):
+                bruto = linha.strip()
+                if bruto.startswith("|"):
+                    bruto = bruto[1:]
+                if bruto.endswith("|"):
+                    bruto = bruto[:-1]
+                return [c.strip() for c in bruto.split("|")]
+
+            cabecalho = celulas(linhas_tab[0])
+            corpo = [celulas(l) for l in linhas_tab[1:]]
+            th = "".join(f"<th>{md_inline(c)}</th>" for c in cabecalho)
+            trs = "".join(
+                "<tr>" + "".join(f"<td>{md_inline(c)}</td>" for c in linha) + "</tr>"
+                for linha in corpo
+            )
+            saida.append(
+                '<div class="tabela-rolavel"><table><thead><tr>'
+                + th + "</tr></thead><tbody>" + trs + "</tbody></table></div>"
+            )
+        tabela = []
+
     def fecha_tudo():
         fecha_p()
         fecha_lista()
         fecha_citacao()
+        fecha_tabela()
 
     for linha in linhas:
         crua = linha.rstrip()
@@ -209,6 +238,14 @@ def markdown(texto: str) -> str:
 
         if not strip:
             fecha_tudo()
+            continue
+
+        # linha de tabela: comeca e termina com | e tem ao menos duas colunas
+        if strip.startswith("|") and strip.endswith("|") and strip.count("|") >= 3:
+            fecha_p()
+            fecha_lista()
+            fecha_citacao()
+            tabela.append(strip)
             continue
 
         m = re.match(r"^(#{2,4})\s+(.*)$", strip)
