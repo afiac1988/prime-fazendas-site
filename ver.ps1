@@ -1,4 +1,4 @@
-# =============================================================================
+﻿# =============================================================================
 #  Prime Fazendas — VER O SITE NO COMPUTADOR (sem publicar nada)
 #
 #  Uso:  .\ver.ps1
@@ -6,6 +6,8 @@
 #  Gera o site a partir de conteudo/ e abre no navegador em http://127.0.0.1:8099
 #  Nada sai do seu computador. Pode rodar quantas vezes quiser.
 # =============================================================================
+
+param([switch]$Demo)
 
 $ErrorActionPreference = 'Stop'
 $raiz = $PSScriptRoot

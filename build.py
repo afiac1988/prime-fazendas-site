@@ -30,6 +30,11 @@ SAIDA = RAIZ / "site"
 
 PENDENTE = "PREENCHER"
 
+# --demo mostra tambem o que esta com publicado=false, para conferir o layout
+# antes de colocar no ar. O publicar.ps1 nunca usa esse modo: ele sempre
+# regenera o site/ sem a flag, entao rascunho nao tem como escapar.
+MOSTRAR_RASCUNHOS = "--demo" in sys.argv
+
 avisos: list[str] = []
 bloqueios: list[str] = []
 
@@ -585,7 +590,9 @@ def carregar_imoveis() -> list[dict]:
             continue
 
         if not d.get("publicado"):
-            continue
+            if not MOSTRAR_RASCUNHOS:
+                continue
+            d["_rascunho"] = True
 
         if "EXEMPLO" in str(d.get("titulo", "")).upper():
             d["_exemplo"] = True
@@ -617,7 +624,8 @@ def carregar_posts() -> list[dict]:
         if arq.name.startswith("_"):
             continue
         meta, corpo = ler_markdown_com_frontmatter(arq)
-        if not meta.get("publicado"):
+        rascunho = not meta.get("publicado")
+        if rascunho and not MOSTRAR_RASCUNHOS:
             continue
         if not meta.get("titulo"):
             aviso(f"{arq.name}: sem 'titulo' no cabeçalho — post ignorado.")
@@ -640,6 +648,7 @@ def carregar_posts() -> list[dict]:
             "url": f"/blog/{arq.stem}/",
             "html": markdown(corpo),
             "arquivo": arq.name,
+            "_rascunho": rascunho,
         })
 
     posts.sort(key=lambda p: p["data"], reverse=True)
@@ -655,6 +664,8 @@ def card_imovel(im: dict) -> str:
         selos.append(f'<span class="selo {classe}">{e(rotulo)}</span>')
     if im.get("certificacao_ambiental"):
         selos.append('<span class="selo">Documentação verificada</span>')
+    if im.get("_rascunho"):
+        selos.append('<span class="selo selo--aviso">Rascunho — não publicado</span>')
     if im.get("_exemplo"):
         selos.append('<span class="selo selo--aviso">Exemplo</span>')
 
@@ -821,7 +832,7 @@ def gerar_home(cfg, pag, imoveis, posts, dados_agro, depoimentos) -> str:
     return pagina(cfg, titulo=cfg["site"]["titulo_padrao"],
                   descricao=cfg["site"]["descricao_padrao"], url="/",
                   corpo="\n".join(corpo), json_ld=ld,
-                  rascunho=any(i.get("_exemplo") for i in imoveis))
+                  rascunho=any(i.get("_exemplo") or i.get("_rascunho") for i in imoveis))
 
 
 def card_post(p: dict) -> str:
@@ -1027,7 +1038,7 @@ def gerar_lista_imoveis(cfg, pag, imoveis) -> str:
     return pagina(cfg, titulo=s.get("titulo", "Imóveis rurais à venda"),
                   descricao=s.get("chamada", ""), url="/imoveis/",
                   corpo="\n".join(corpo),
-                  rascunho=any(i.get("_exemplo") for i in imoveis))
+                  rascunho=any(i.get("_exemplo") or i.get("_rascunho") for i in imoveis))
 
 
 def gerar_ficha_imovel(cfg, im) -> str:
@@ -1149,7 +1160,7 @@ def gerar_ficha_imovel(cfg, im) -> str:
 
     return pagina(cfg, titulo=im["titulo"], descricao=desc, url=im["url"],
                   corpo="\n".join(corpo), og_tipo="article", json_ld=ld,
-                  rascunho=bool(im.get("_exemplo")))
+                  rascunho=bool(im.get("_exemplo") or im.get("_rascunho")))
 
 
 def gerar_comunidade(cfg, pag) -> str:
@@ -1466,7 +1477,12 @@ def auditar(cfg: dict, imoveis: list, posts: list, dados_agro: dict, depoimentos
             if str(valor).strip() == PENDENTE:
                 aviso(f"config.json → {grupo}.{chave} ainda está em {PENDENTE}.")
 
-    exemplos = [i["arquivo"] for i in imoveis if i.get("_exemplo")]
+    if MOSTRAR_RASCUNHOS:
+        n_r = sum(1 for i in imoveis if i.get("_rascunho")) + sum(1 for p in posts if p.get("_rascunho"))
+        aviso(f"MODO RASCUNHO (--demo): {n_r} item(ns) nao publicado(s) estao aparecendo. "
+              f"Isso e so para voce ver o layout — o publicar.ps1 ignora este modo.")
+
+    exemplos = [i["arquivo"] for i in imoveis if i.get("_exemplo") and not i.get("_rascunho")]
     if exemplos:
         bloqueio("imóveis de EXEMPLO publicados: " + ", ".join(exemplos)
                  + ". Troque pelos dados reais ou marque publicado=false antes de subir.")

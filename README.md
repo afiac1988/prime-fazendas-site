@@ -57,11 +57,19 @@ nenhuma.
 
 ```powershell
 .\ver.ps1          # gera o site e abre no navegador (nada sai do PC)
+.\ver.ps1 -Demo    # mostra também o que está em rascunho (publicado=false)
 .\publicar.ps1     # gera, audita, sobe para a Hostinger e versiona no git
 .\publicar.ps1 -SomenteGerar   # só valida, não envia
 ```
 
 Nenhum outro passo. Não há build de CSS, nem compilação, nem servidor de aplicação.
+
+O `-Demo` existe para você conferir o layout de um imóvel antes de publicá-lo.
+O `publicar.ps1` **nunca** usa esse modo — ele sempre regenera o `site/` sem a
+flag, então rascunho não tem como escapar para o ar.
+
+Os três imóveis de exemplo vêm com `publicado: false`: o site já está num estado
+publicável e honesto desde o primeiro dia. Use `.\ver.ps1 -Demo` para vê-los.
 
 ---
 

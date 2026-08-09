@@ -19,6 +19,23 @@ Abra a pasta do site, clique com o botão direito num espaço vazio →
 Sempre rode `.\ver.ps1` antes de `.\publicar.ps1`. Leva 5 segundos e evita
 publicar bobagem.
 
+**Não precisa abrir como administrador.** Nenhum dos scripts mexe em
+configuração do Windows. Um PowerShell normal resolve.
+
+### Ver um imóvel antes de publicar
+
+```powershell
+.\ver.ps1 -Demo
+```
+
+Mostra também o que está com `publicado: false`, marcado com o selo
+**Rascunho**. Serve para conferir o layout antes de liberar. O `publicar.ps1`
+ignora esse modo — rascunho não vai para o ar por acidente.
+
+> Os três imóveis de exemplo que vieram no projeto estão com
+> `publicado: false`. Rode `.\ver.ps1 -Demo` para ver como fica a página de um
+> imóvel preenchido, e use os arquivos deles como referência.
+
 ---
 
 ## 1. Colocar um imóvel novo no site
