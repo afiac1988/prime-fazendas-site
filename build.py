@@ -1482,6 +1482,31 @@ def auditar(cfg: dict, imoveis: list, posts: list, dados_agro: dict, depoimentos
         aviso(f"MODO RASCUNHO (--demo): {n_r} item(ns) nao publicado(s) estao aparecendo. "
               f"Isso e so para voce ver o layout — o publicar.ps1 ignora este modo.")
 
+    # Dado de teste que escapa para o ar e pior do que campo vazio: telefone que
+    # ninguem atende perde lead, e CRECI falso e numero de registro regulado —
+    # publicar um inventado expoe a empresa a sancao administrativa.
+    suspeitos = []
+    for chave in ("telefone", "telefone_link", "whatsapp",
+                  "whatsapp_numero_internacional", "creci"):
+        valor = (cfg.get("contato") or {}).get(chave)
+        if not preenchido(valor):
+            continue
+        digitos = re.sub(r"[^0-9]", "", str(valor))
+        if len(digitos) < 4:
+            continue
+        motivo = ""
+        if re.search(r"(\d)\1{4,}", digitos):
+            motivo = "o mesmo digito repetido 5 vezes ou mais"
+        elif re.search(r"01234|12345|23456|34567|45678|98765|87654", digitos):
+            motivo = "sequencia numerica obvia"
+        if motivo:
+            suspeitos.append(f"contato.{chave} = {valor} ({motivo})")
+
+    if suspeitos:
+        bloqueio("dados de contato aparentemente ficticios: "
+                 + "; ".join(suspeitos)
+                 + ". Troque pelos reais antes de publicar.")
+
     exemplos = [i["arquivo"] for i in imoveis if i.get("_exemplo") and not i.get("_rascunho")]
     if exemplos:
         bloqueio("imóveis de EXEMPLO publicados: " + ", ".join(exemplos)

@@ -20,23 +20,27 @@
   },
 
   "contato": {
-    "telefone": "PREENCHER",
-    "telefone_link": "PREENCHER",
-    "whatsapp": "PREENCHER",
-    "whatsapp_numero_internacional": "PREENCHER",
+    "_atencao": "Os valores abaixo são de TESTE (99999-9999, CRECI 12345). Servem para conferir o layout. O build bloqueia a publicação enquanto eles estiverem aqui — troque pelos reais.",
+    "telefone": "(63) 99999-9999",
+    "telefone_link": "5563999999999",
+    "whatsapp": "(63) 99999-9999",
+    "whatsapp_numero_internacional": "5563999999999",
     "whatsapp_mensagem": "Olá! Vim pelo site da Prime Fazendas e gostaria de falar com um especialista.",
     "email": "contato@primefazendas.com",
-    "endereco": "PREENCHER",
+    "endereco": "Palmas, Tocantins",
     "cidade": "Palmas",
     "estado": "TO",
     "pais": "BR",
-    "creci": "PREENCHER",
+    "creci": "12345/TO",
     "horario": "Segunda a sexta, 8h às 18h"
   },
 
   "redes": {
-    "instagram": "PREENCHER",
+    "_leia": "Precisa ser a URL completa do perfil, não o @. O rodapé transforma isso em link.",
+    "instagram": "https://www.instagram.com/primefazendas/",
+    "_instagram": "Derivado do @primefazendas. CONFIRME se é mesmo o perfil oficial antes de publicar.",
     "linkedin": "PREENCHER",
+    "_linkedin": "Você passou o nome 'Prime Fazendas', não o endereço. Abra a página no LinkedIn e cole a URL da barra do navegador.",
     "youtube": "",
     "facebook": ""
   },

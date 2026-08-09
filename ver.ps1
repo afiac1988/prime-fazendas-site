@@ -37,7 +37,12 @@ $env:PYTHONIOENCODING = 'utf-8'
 
 Write-Host ""
 Write-Host "  Gerando o site..." -ForegroundColor Cyan
-& $python "$raiz\build.py"
+if ($Demo) {
+    Write-Host "  (modo rascunho: mostrando tambem o que esta com publicado=false)" -ForegroundColor Yellow
+    & $python "$raiz\build.py" --demo
+} else {
+    & $python "$raiz\build.py"
+}
 $codigo = $LASTEXITCODE
 
 if ($codigo -ne 0) {
