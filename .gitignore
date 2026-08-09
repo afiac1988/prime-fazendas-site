@@ -25,3 +25,5 @@ __pycache__/
 *.log
 *.tmp
 *.bak
+
+manutencao.local.json

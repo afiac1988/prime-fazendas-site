@@ -54,7 +54,10 @@ def ler_json(caminho: Path) -> dict:
         bloqueio(f"arquivo obrigatório não encontrado: {caminho.relative_to(RAIZ)}")
         return {}
     try:
-        with caminho.open(encoding="utf-8") as f:
+        # utf-8-sig, e nao utf-8: o Bloco de Notas e o PowerShell gravam UTF-8
+        # com BOM, e o parser padrao rejeita esses 3 bytes com uma mensagem que
+        # nao ajuda ninguem. Assim os dois formatos funcionam.
+        with caminho.open(encoding="utf-8-sig") as f:
             return json.load(f)
     except json.JSONDecodeError as e:
         bloqueio(
@@ -567,6 +570,37 @@ def cta_faixa(cfg: dict, titulo: str, texto: str, botao: str = "Falar com um esp
 
 
 # =============================================================== conteúdo ==
+
+def carregar_manutencao() -> dict:
+    """
+    Le manutencao.local.json (fora do versionamento). Quando ativo, o site
+    inteiro fica atras de autenticacao HTTP do Apache — o servidor nao entrega
+    nem o HTML sem a senha, diferente de uma tela de senha em JavaScript, que
+    manda a pagina toda para o navegador e so esconde visualmente.
+    """
+    arq = RAIZ / "manutencao.local.json"
+    if not arq.exists():
+        return {"ativa": False}
+
+    dados = limpar_meta(ler_json(arq))
+    if not dados.get("ativa"):
+        return {"ativa": False}
+
+    if not preenchido(dados.get("hash")):
+        bloqueio("manutencao.local.json tem ativa=true mas nao tem hash de senha. "
+                 "Rode: .\\manutencao.ps1 -Ativar")
+        return {"ativa": False}
+
+    if not preenchido(dados.get("caminho_no_servidor")):
+        bloqueio("manutencao.local.json tem ativa=true mas 'caminho_no_servidor' esta "
+                 "vazio. O Apache exige o caminho ABSOLUTO do .htpasswd no servidor; "
+                 "sem ele a protecao nao funciona e o site subiria aberto sem avisar. "
+                 "Pegue em hPanel > Arquivos > Gerenciador de Arquivos, ou rode "
+                 ".\\manutencao.ps1 -Descobrir")
+        return {"ativa": False}
+
+    return dados
+
 
 def carregar_imoveis() -> list[dict]:
     itens = []
@@ -1413,6 +1447,25 @@ FAVICON = (
     + "</svg>"
 )
 
+def bloco_manutencao(man: dict) -> str:
+    """Diretivas de autenticacao basica que vao para o topo do .htaccess."""
+    caminho = man["caminho_no_servidor"].rstrip("/")
+    mensagem = man.get("mensagem_navegador") or "Area restrita"
+    return f"""
+# ---------------------------------------------------------------------------
+# MODO MANUTENCAO ATIVO
+# O site inteiro exige usuario e senha. Para liberar ao publico:
+#     .\\manutencao.ps1 -Desativar
+#     .\\publicar.ps1
+# ---------------------------------------------------------------------------
+AuthType Basic
+AuthName "{mensagem}"
+AuthUserFile {caminho}/.htpasswd
+Require valid-user
+
+"""
+
+
 HTACCESS = """# Prime Fazendas — configuração de servidor (Apache / Hostinger)
 
 # HTTPS obrigatório
@@ -1457,6 +1510,11 @@ ErrorDocument 404 /404.html
 <IfModule mod_autoindex.c>
   Options -Indexes
 </IfModule>
+
+# O proprio arquivo de senhas nunca pode ser servido pela web
+<FilesMatch "^\\.(htaccess|htpasswd)$">
+  Require all denied
+</FilesMatch>
 """
 
 
@@ -1545,6 +1603,7 @@ def main() -> int:
     if not cfg.get("rodape"):
         cfg["rodape"] = pag.get("rodape", {})
 
+    manutencao = carregar_manutencao()
     imoveis = carregar_imoveis()
     posts = carregar_posts()
 
@@ -1605,8 +1664,18 @@ def main() -> int:
              '<?xml version="1.0" encoding="UTF-8"?>\n'
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
              + entradas + "</urlset>\n")
-    escrever("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {dominio}/sitemap.xml\n")
-    escrever(".htaccess", HTACCESS)
+    # Sob manutencao o site nao deve ser indexado: se o Google visitar durante a
+    # obra e receber 401, corre o risco de derrubar as paginas do indice.
+    if manutencao.get("ativa"):
+        escrever("robots.txt", "User-agent: *\nDisallow: /\n")
+    else:
+        escrever("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {dominio}/sitemap.xml\n")
+
+    htaccess = HTACCESS
+    if manutencao.get("ativa"):
+        htaccess = bloco_manutencao(manutencao) + HTACCESS
+        escrever(".htpasswd", f"{manutencao['usuario']}:{manutencao['hash']}\n")
+    escrever(".htaccess", htaccess)
 
     n = sum(1 for _ in SAIDA.rglob("*.html"))
     relatar(n, imoveis, posts)
