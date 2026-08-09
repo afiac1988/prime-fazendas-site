@@ -151,6 +151,19 @@ Abaixo do segundo `---`, escreva normalmente:
 - `- assim` vira item de lista
 - `**assim**` fica em negrito
 - `[texto](https://link)` vira link
+- `> assim` vira citação em destaque
+
+Tabelas também funcionam:
+
+```
+| Documento | Para que serve |
+|---|---|
+| Matrícula | Prova quem é o dono |
+| CAR | Situação ambiental |
+```
+
+No celular a tabela ganha rolagem própria, então pode ser larga sem quebrar
+a página.
 
 Publique. O artigo entra automaticamente no blog e na primeira página.
 
@@ -209,7 +222,52 @@ ele deveria construir.
 
 ---
 
-## 8. Primeira publicação — configurar o acesso à Hostinger
+## 8. Subir o site protegido por senha (modo manutenção)
+
+Enquanto você ainda está ajustando conteúdo, dá para deixar o site no ar mas
+fechado ao público:
+
+```powershell
+.\manutencao.ps1 -Estado      # mostra como está
+.\manutencao.ps1 -Ativar      # liga (pede a senha)
+.\manutencao.ps1 -Desativar   # abre ao público
+```
+
+Depois de ligar ou desligar, rode `.\publicar.ps1` para valer no ar.
+
+A proteção é a autenticação do próprio servidor: **o Apache não entrega nem o
+HTML sem a senha**. Isso é diferente de uma tela de senha em JavaScript, que
+manda a página inteira para o navegador e só esconde visualmente — nesse caso,
+qualquer pessoa lê o conteúdo pelo código-fonte.
+
+Enquanto o modo estiver ligado, o `robots.txt` bloqueia buscadores, para o
+Google não tentar acessar durante a obra e derrubar páginas do índice.
+
+### O passo que trava
+
+O Apache exige o **caminho absoluto** do arquivo de senhas dentro do servidor.
+Caminho relativo é ignorado em silêncio — e o site subiria aberto parecendo
+protegido. Por isso o `publicar.ps1` se recusa a subir sem esse caminho.
+
+Para obtê-lo:
+
+```powershell
+.\manutencao.ps1 -Descobrir
+```
+
+Ele sobe um arquivo temporário, lê o caminho, apaga o arquivo e grava o
+resultado. Precisa do `deploy.local.json` configurado.
+
+Sem FTP ainda? Pegue manualmente: **hPanel → Arquivos → Gerenciador de
+Arquivos**, entre em `public_html` e leia o caminho na barra de cima. Depois
+cole em `manutencao.local.json`, no campo `caminho_no_servidor`.
+
+**Estado atual:** modo manutenção está **ligado**, usuário `prime`, senha
+`369369`, faltando apenas o caminho do servidor.
+
+---
+
+## 9. Primeira publicação — configurar o acesso à Hostinger
 
 Só precisa ser feito **uma vez**.
 
