@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Fazendas - Propriedades Rurais Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0C1E33;
+            --primary-light: #1a3a52;
+            --accent: #C9A44C;
+            --accent-light: #d4b765;
+            --text: #2c3e50;
+            --light: #f8f9fa;
+            --border: #e0e0e0;
+            --success: #27ae60;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: #fff;
+        }
+
+        /* HEADER */
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--accent);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(201, 164, 76, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* SEARCH BAR */
+        .search-section {
+            background: linear-gradient(135deg, var(--light) 0%, #f0f0f0 100%);
+            padding: 60px 20px;
+        }
+
+        .search-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .search-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .search-input {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .search-input label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary);
+            font-size: 14px;
+        }
+
+        .search-input input,
+        .search-input select {
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input input:focus,
+        .search-input select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(201,164,76,0.1);
+        }
+
+        .search-btn {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .search-btn button {
+            width: 100%;
+            padding: 12px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn button:hover {
+            background: #b8933d;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(201,164,76,0.3);
+        }
+
+        /* PROPERTIES GRID */
+        .properties {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .property-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .property-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .property-image {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, var(--accent) 0%, #8b7438 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .property-image::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .property-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--success);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .property-info {
+            padding: 25px;
+        }
+
+        .property-location {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .property-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .property-description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .property-specs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .spec {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .property-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .property-link {
+            display: inline-block;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .property-link:hover {
+            color: var(--accent);
+        }
+
+        /* STATS */
+        .stats {
+            background: var(--primary);
+            color: white;
+            padding: 60px 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* ABOUT */
+        .about {
+            background: var(--light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--accent);
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .about-text p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .about-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .about-list li {
+            padding: 10px 0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-list li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* CONTACT */
+        .contact {
+            background: var(--primary);
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-item h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .contact-item p {
+            color: rgba(255,255,255,0.9);
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0a1620;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            color: white;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* TRUST SECTION */
+        .trust-section {
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .trust-icon {
+            font-size: 40px;
+        }
+
+        .trust-item h4 {
+            color: var(--primary);
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .trust-item p {
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* FEATURED BADGE */
+        .featured-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: linear-gradient(135deg, var(--accent), #d4b765);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 25px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* LISTING SECTION */
+        .listing-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .listing-filters {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 18px;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* TESTIMONIALS SECTION */
+        .testimonials {
+            background: var(--light);
+            padding: 80px 20px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+
+        .testimonial-rating {
+            color: var(--accent);
+            font-size: 14px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-text {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #8b7438);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .author-info h4 {
+            color: var(--primary);
+            font-size: 14px;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .author-info p {
+            color: #999;
+            font-size: 12px;
+            margin: 0;
+        }
+
+        /* NEWSLETTER SECTION */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .newsletter p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+
+        .newsletter-form button {
+            padding: 14px 30px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover {
+            background: #b8933d;
+            transform: translateY(-2px);
+        }
+
+        .newsletter-privacy {
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* SERVICES SECTION */
+        .services {
+            background: white;
+            padding: 80px 20px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            padding: 40px 30px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(201,164,76,0.15);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* PROPERTY MODAL */
+        .property-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+            padding: 15px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .detail-label {
+            color: #999;
+            font-weight: 500;
+        }
+
+        .detail-value {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* ENHANCED FOOTER */
+        .footer-highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 30px;
+        }
+
+        .footer-highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-highlight-item {
+            text-align: center;
+        }
+
+        .footer-highlight-item p {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .footer-highlight-item span {
+            color: rgba(255,255,255,0.9);
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            .properties {
+                grid-template-columns: 1fr;
+            }
+
+            .search-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons a {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">🌾 Prime Fazendas</div>
+            <nav>
+                <ul>
+                    <li><a href="#buscar">Buscar</a></li>
+                    <li><a href="#propriedades">Propriedades</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#contato" class="btn-primary">Anunciar Propriedade</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Encontre Sua Propriedade Rural Ideal</h1>
+            <p>Explore as melhores fazendas, sítios e propriedades rurais para investimento ou moradia</p>
+            <div class="hero-buttons">
+                <a href="#buscar" class="btn-primary">🔍 Buscar Agora</a>
+                <a href="#contato" class="btn-secondary">📞 Fale Conosco</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BUSCAR -->
+    <section id="buscar" class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <div class="search-grid">
+                    <div class="search-input">
+                        <label>Localização</label>
+                        <input type="text" placeholder="Estado ou Região">
+                    </div>
+                    <div class="search-input">
+                        <label>Tipo de Propriedade</label>
+                        <select>
+                            <option>Todos</option>
+                            <option>Fazenda</option>
+                            <option>Sítio</option>
+                            <option>Chácara</option>
+                            <option>Terreno Rural</option>
+                        </select>
+                    </div>
+                    <div class="search-input">
+                        <label>Preço Máximo</label>
+                        <input type="text" placeholder="R$ 0,00">
+                    </div>
+                    <div class="search-btn">
+                        <button>🔍 Buscar Propriedades</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST BADGES -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-icon">✅</div>
+                    <h4>Propriedades Verificadas</h4>
+                    <p>Todas as propriedades passam por rigorosa verificação</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">🛡️</div>
+                    <h4>100% Seguro</h4>
+                    <p>Documentação e transações garantidas por lei</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">💰</div>
+                    <h4>Melhor Preço</h4>
+                    <p>Comparar e economizar em suas transações</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">🤝</div>
+                    <h4>Atendimento Premium</h4>
+                    <p>Especialistas dedicados ao seu sucesso</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROPRIEDADES -->
+    <section id="propriedades" class="section">
+        <div class="container">
+            <h2 class="section-title">Propriedades em Destaque</h2>
+            <div class="listing-header">
+                <div class="listing-filters">
+                    <button class="filter-btn active">Todas</button>
+                    <button class="filter-btn">Fazendas</button>
+                    <button class="filter-btn">Sítios</button>
+                    <button class="filter-btn">Investimento</button>
+                </div>
+                <div style="color: #666; font-size: 14px;">
+                    <strong>1.200+</strong> propriedades disponíveis
+                </div>
+            </div>
+            <div class="properties">
+                <!-- Card 1 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        🌾
+                        <span class="featured-badge">⭐ Em Destaque</span>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-location">🗺️ Interior de São Paulo</div>
+                        <h3 class="property-title">Fazenda Premium com Água Artesiana</h3>
+                        <p class="property-description">Propriedade completa com estrutura moderna, casa principal, galpão e água artesiana própria.</p>
+                        <div class="property-specs">
+                            <span class="spec">📐 50 ha</span>
+                            <span class="spec">🏠 3 dorms</span>
+                            <span class="spec">💧 Água</span>
+                        </div>
+                        <div class="property-price">R$ 1.500.000</div>
+                        <a href="#contato" class="property-link">Solicitar Visita →</a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        🏡
+                        <span class="property-badge">Novo</span>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-location">🗺️ Região Serrana</div>
+                        <h3 class="property-title">Sítio Residencial Moderno</h3>
+                        <p class="property-description">Casa contemporânea com piscina, paisagismo profissional, ampla garagem e área de lazer completa.</p>
+                        <div class="property-specs">
+                            <span class="spec">📐 15 ha</span>
+                            <span class="spec">🏠 4 dorms</span>
+                            <span class="spec">🏊 Piscina</span>
+                        </div>
+                        <div class="property-price">R$ 850.000</div>
+                        <a href="#contato" class="property-link">Solicitar Visita →</a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        🌱
+                        <span class="property-badge">Destaque</span>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-location">🗺️ Área Rural</div>
+                        <h3 class="property-title">Chácara com Energia Solar</h3>
+                        <p class="property-description">Propriedade sustentável com sistema solar completo, poço profundo e benfeitorias modernas.</p>
+                        <div class="property-specs">
+                            <span class="spec">📐 8 ha</span>
+                            <span class="spec">🏠 2 dorms</span>
+                            <span class="spec">☀️ Solar</span>
+                        </div>
+                        <div class="property-price">R$ 520.000</div>
+                        <a href="#contato" class="property-link">Solicitar Visita →</a>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        🚜
+                        <span class="property-badge">Investimento</span>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-location">🗺️ Mato Grosso do Sul</div>
+                        <h3 class="property-title">Fazenda para Agronegócio</h3>
+                        <p class="property-description">Propriedade rural com certificação ambiental, estrutura para produção agrícola em larga escala.</p>
+                        <div class="property-specs">
+                            <span class="spec">📐 250 ha</span>
+                            <span class="spec">🏭 Benfeitorias</span>
+                            <span class="spec">📋 Licenciada</span>
+                        </div>
+                        <div class="property-price">R$ 2.800.000</div>
+                        <a href="#contato" class="property-link">Solicitar Visita →</a>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        🏞️
+                        <span class="property-badge">Panorâmica</span>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-location">🗺️ Paraná</div>
+                        <h3 class="property-title">Terreno Rural com Vista Panorâmica</h3>
+                        <p class="property-description">Lote em região de alto potencial de valorização com infraestrutura de acesso facilitado.</p>
+                        <div class="property-specs">
+                            <span class="spec">📐 35 ha</span>
+                            <span class="spec">👀 Vista</span>
+                            <span class="spec">🛣️ Acesso</span>
+                        </div>
+                        <div class="property-price">R$ 680.000</div>
+                        <a href="#contato" class="property-link">Solicitar Visita →</a>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        🌳
+                        <span class="property-badge">Sustentável</span>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-location">🗺️ Santa Catarina</div>
+                        <h3 class="property-title">Propriedade Agroecológica</h3>
+                        <p class="property-description">Fazenda certificada para produção orgânica com estrutura completa e histórico de produção.</p>
+                        <div class="property-specs">
+                            <span class="spec">📐 42 ha</span>
+                            <span class="spec">🌱 Orgânica</span>
+                            <span class="spec">✓ Certificado</span>
+                        </div>
+                        <div class="property-price">R$ 1.200.000</div>
+                        <a href="#contato" class="property-link">Solicitar Visita →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-number">1.200+</div>
+                    <div class="stat-label">Propriedades Listadas</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">45.000+</div>
+                    <div class="stat-label">Clientes Satisfeitos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">18+</div>
+                    <div class="stat-label">Anos de Experiência</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">R$ 2.8B+</div>
+                    <div class="stat-label">Em Transações</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="section about">
+        <div class="container">
+            <div class="about-content">
+                <div>
+                    <h3>Sobre a Prime Fazendas</h3>
+                    <h2>Sua Parceira Confiável em Propriedades Rurais</h2>
+                    <p>Com mais de 18 anos de atuação no mercado imobiliário rural, a Prime Fazendas é referência em facilitar a compra, venda e locação de propriedades rurais de qualidade em todo o Brasil.</p>
+                    <p>Nossa equipe especializada acompanha cada transação pessoalmente, garantindo transparência, segurança e resultados excepcionais para investidores e proprietários.</p>
+                    <ul class="about-list">
+                        <li>Equipe de especialistas certificados</li>
+                        <li>Propriedades selecionadas e verificadas</li>
+                        <li>Documentação completa e legalizada</li>
+                        <li>Assessoria jurídica especializada</li>
+                        <li>Parcelamento e financiamento</li>
+                        <li>Suporte pós-venda permanente</li>
+                    </ul>
+                </div>
+                <div style="background: linear-gradient(135deg, var(--accent) 0%, #8b7438 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 120px;">
+                    🏢
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>Busca Inteligente</h3>
+                    <p>Filtros avançados para encontrar exatamente o que você procura em segundos</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>Documentação Legal</h3>
+                    <p>Verificação completa de toda documentação e regularização de propriedades</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3>Consultoria Especializada</h3>
+                    <p>Equipe de especialistas para orientar sua decisão de investimento</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📞</div>
+                    <h3>Atendimento 24/7</h3>
+                    <p>Suporte contínuo via telefone, email e WhatsApp a qualquer hora</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Financiamento</h3>
+                    <p>Parcerias com instituições financeiras para facilitar seu investimento</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">✈️</div>
+                    <h3>Visitas Acompanhadas</h3>
+                    <p>Realizamos visitas técnicas com profissionais certificados</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Encontrei a propriedade dos meus sonhos através da Prime Fazendas. O atendimento foi excepcional e o processo muito transparente. Recomendo!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">👨</div>
+                        <div class="author-info">
+                            <h4>Carlos Oliveira</h4>
+                            <p>Investidor - São Paulo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Excelente plataforma para quem busca propriedades rurais. Interface intuitiva e muitas opções de filtro. Muito útil mesmo!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">👩</div>
+                        <div class="author-info">
+                            <h4>Fernanda Silva</h4>
+                            <p>Agricultora - Mato Grosso</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Fechamos um negócio de R$ 2 milhões com ajuda da Prime Fazendas. Profissionalismo, segurança e rapidez em todas as etapas!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">👨</div>
+                        <div class="author-info">
+                            <h4>Roberto Mendes</h4>
+                            <p>Empresário - Paraná</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter">
+        <div class="newsletter-content">
+            <h2>Fique Atualizado com as Melhores Oportunidades</h2>
+            <p>Receba notificações exclusivas sobre novas propriedades e investimentos de alto potencial</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Email cadastrado com sucesso!');">
+                <input type="email" placeholder="Seu email" required>
+                <button type="submit">Inscrever-se</button>
+            </form>
+            <p class="newsletter-privacy">✓ Sem spam. Desinscrever a qualquer momento.</p>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="section contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Entre em Contato</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h3>📞 Telefone</h3>
+                    <p>+55 (11) 3500-1200</p>
+                    <p>+55 (11) 98765-4321</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📧 Email</h3>
+                    <p><a href="mailto:contato@primefazendas.com">contato@primefazendas.com</a></p>
+                    <p><a href="mailto:vendas@primefazendas.com">vendas@primefazendas.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>💬 WhatsApp</h3>
+                    <p><a href="https://wa.me/5511987654321">+55 (11) 98765-4321</a></p>
+                    <p>Disponível 24h</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📍 Localização</h3>
+                    <p>Av. Paulista, 1500</p>
+                    <p>São Paulo - SP, Brasil</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER HIGHLIGHT -->
+    <div class="footer-highlight">
+        <div class="container">
+            <div class="footer-highlight-grid">
+                <div class="footer-highlight-item">
+                    <p>1.200+</p>
+                    <span>Propriedades Ativas</span>
+                </div>
+                <div class="footer-highlight-item">
+                    <p>45.000+</p>
+                    <span>Clientes Satisfeitos</span>
+                </div>
+                <div class="footer-highlight-item">
+                    <p>18+</p>
+                    <span>Anos de Experiência</span>
+                </div>
+                <div class="footer-highlight-item">
+                    <p>R$ 2.8B+</p>
+                    <span>Em Transações</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>🌾 Prime Fazendas</h4>
+                <ul>
+                    <li><a href="#sobre">Sobre Nós</a></li>
+                    <li><a href="#contato">Nossa Equipe</a></li>
+                    <li><a href="#">Carreiras</a></li>
+                    <li><a href="#">Blog & Notícias</a></li>
+                    <li><a href="#">Imprensa</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Catálogo</h4>
+                <ul>
+                    <li><a href="#propriedades">Todas as Propriedades</a></li>
+                    <li><a href="#">Fazendas Premium</a></li>
+                    <li><a href="#">Sítios Residenciais</a></li>
+                    <li><a href="#">Terrenos Rurais</a></li>
+                    <li><a href="#">Investimentos</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Recursos</h4>
+                <ul>
+                    <li><a href="#">Perguntas Frequentes</a></li>
+                    <li><a href="#">Guia de Investimento</a></li>
+                    <li><a href="#">Calculadora de Preços</a></li>
+                    <li><a href="#">Relatórios de Mercado</a></li>
+                    <li><a href="#">Contato para Suporte</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Política de Cookies</a></li>
+                    <li><a href="#">Responsabilidade Civil</a></li>
+                    <li><a href="#">Regulamentações</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Prime Fazendas - Plataforma Premium de Propriedades Rurais. Todos os direitos reservados.</p>
+            <p style="font-size: 12px; margin-top: 10px;">CNPJ: 00.000.000/0000-00 | Licenciado pela Secretaria de Agricultura | Certificado ISO 9001:2015</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({behavior: 'smooth'});
+                }
+            });
+        });
+
+        // Search functionality
+        document.querySelector('.search-btn button')?.addEventListener('click', function() {
+            alert('Búsca iniciada! Em breve você verá os resultados.');
+        });
+    </script>
+</body>
+</html>
