@@ -18,6 +18,24 @@ hospedado na Hostinger.
 | Guarda-corpo no build | O `publicar.ps1` se recusa a subir conteúdo de exemplo ou incompleto. Erro humano é barrado antes do ar. |
 | Envio incremental por FTPS | Só sobe o que mudou. Publicar um post novo leva segundos. |
 
+### Sobre migrar para Next.js
+
+**Decisão tomada em 2026-08-09: fica estático.** Não é falta de ferramenta —
+Node 24 está instalado na máquina.
+
+Na hospedagem compartilhada da Hostinger (Apache + PHP, sem runtime Node), um
+Next.js só publica via `output: 'export'` — que gera exatamente o mesmo HTML
+estático que já existe aqui, ao custo de ~300 MB de `node_modules`, um passo de
+build e upgrades periódicos. Para o visitante, nada muda.
+
+Next.js passaria a valer a pena se aparecer: rotas de API para o formulário,
+CMS com editor visual, ISR para um portfólio grande, ou um time React assumindo
+a manutenção. Nenhum desses é o caso hoje.
+
+Se algum dia for: a camada de conteúdo (`conteudo/*.json` e `*.md`) porta direto
+para qualquer framework — foi desenhada separada da apresentação justamente
+para isso. O que se joga fora é só o `build.py` e o `tema/`.
+
 ---
 
 ## A marca
