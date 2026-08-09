@@ -132,7 +132,7 @@ TIPOS = {
 }
 
 STATUS = {
-    "disponivel": ("Disponível", "selo--verde"),
+    "disponivel": ("Disponível", "selo--azul"),
     "reservado": ("Reservado", "selo--dourado"),
     "vendido": ("Vendido", "selo--vendido"),
 }
@@ -277,9 +277,9 @@ def ler_markdown_com_frontmatter(caminho: Path) -> tuple[dict, str]:
 SVG_HORIZONTE = (
     '<svg class="hero__horizonte" viewBox="0 0 1440 220" preserveAspectRatio="none" '
     'aria-hidden="true" focusable="false" height="220">'
-    '<path fill="#0F2419" fill-opacity=".55" d="M0 168l120-26 110 18 130-40 140 30 120-24 '
+    '<path fill="#0C1E33" fill-opacity=".55" d="M0 168l120-26 110 18 130-40 140 30 120-24 '
     '130 34 140-30 120 22 110-18 120 26v66H0z"/>'
-    '<path fill="#0F2419" fill-opacity=".85" d="M0 196l160-20 140 16 150-26 130 22 140-18 '
+    '<path fill="#0C1E33" fill-opacity=".85" d="M0 196l160-20 140 16 150-26 130 22 140-18 '
     '160 24 140-16 160 20v34H0z"/>'
     "</svg>"
 )
@@ -287,23 +287,38 @@ SVG_HORIZONTE = (
 SVG_CAPA = (
     '<svg viewBox="0 0 800 200" preserveAspectRatio="none" aria-hidden="true" '
     'focusable="false" height="200">'
-    '<path fill="#0F2419" fill-opacity=".5" d="M0 128l90-22 80 16 100-32 90 24 100-20 '
+    '<path fill="#0C1E33" fill-opacity=".5" d="M0 128l90-22 80 16 100-32 90 24 100-20 '
     '90 26 90-22 80 18 80-16v100H0z"/>'
-    '<path fill="#0F2419" fill-opacity=".8" d="M0 158l110-16 90 12 110-20 100 16 '
+    '<path fill="#0C1E33" fill-opacity=".8" d="M0 158l110-16 90 12 110-20 100 16 '
     '110-14 100 18 90-12 90 16v42H0z"/>'
     "</svg>"
 )
 
-SVG_SELO = (
-    '<svg class="marca__selo" width="38" height="38" viewBox="0 0 40 40" '
-    'aria-hidden="true" focusable="false">'
-    '<circle cx="20" cy="20" r="18.5" fill="none" stroke="#C29B3C" stroke-width="1.1"/>'
-    '<path d="M20 8.5c0 6-4.6 9.4-4.6 14.2 0 3 2.1 5.2 4.6 5.2s4.6-2.2 4.6-5.2'
-    'C24.6 17.9 20 14.5 20 8.5z" fill="#1E4230"/>'
-    '<path d="M20 28v4.2" stroke="#1E4230" stroke-width="1.3" stroke-linecap="round"/>'
-    '<path d="M12.5 31.5h15" stroke="#C29B3C" stroke-width="1.1" stroke-linecap="round"/>'
-    "</svg>"
-)
+# Marca da Prime Fazendas: sol sobre os sulcos do plantio.
+# O desenho vem de tema/assets/marca.svg, gerado por ferramentas/gerar_og.py a
+# partir da mesma geometria da imagem de compartilhamento — logo do site e
+# miniatura do WhatsApp sao o mesmo desenho, nunca divergem.
+_MARCA_SVG = (TEMA / "assets" / "marca.svg").read_text(encoding="utf-8")     if (TEMA / "assets" / "marca.svg").exists() else ""
+
+if not _MARCA_SVG:
+    aviso("tema/assets/marca.svg nao encontrado — rode: python ferramentas/gerar_og.py")
+
+
+def svg_marca(classe: str = "marca__selo", tam: int = 40, ident: str = "pf") -> str:
+    """Insere a marca com um id de mascara proprio, para poder repetir na pagina."""
+    if not _MARCA_SVG:
+        return ""
+    svg = _MARCA_SVG.replace("MASCARA", f"{ident}-sulcos")
+    return svg.replace(
+        "<svg ",
+        f'<svg class="{classe}" width="{tam}" height="{tam}" '
+        f'aria-hidden="true" focusable="false" ',
+        1,
+    )
+
+
+SVG_SELO = f'<span class="marca__disco">{svg_marca()}</span>'
+SVG_SELO_RODAPE = f'<span class="marca__disco">{svg_marca(ident="pfr")}</span>'
 
 ICONES_REDE = {
     "instagram": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.96.24 2.65.51.72.28 1.33.66 1.94 1.27.61.61.99 1.22 1.27 1.94.27.69.46 1.48.51 2.65.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.96-.51 2.65a5.2 5.2 0 0 1-1.27 1.94 5.2 5.2 0 0 1-1.94 1.27c-.69.27-1.48.46-2.65.51-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.96-.24-2.65-.51a5.2 5.2 0 0 1-1.94-1.27 5.2 5.2 0 0 1-1.27-1.94c-.27-.69-.46-1.48-.51-2.65C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.24-1.96.51-2.65.28-.72.66-1.33 1.27-1.94A5.2 5.2 0 0 1 5.95 1.3c.69-.27 1.48-.46 2.65-.51C9.87 2.17 10.25 2.16 12 2.16zm0 1.98c-3.15 0-3.5.01-4.74.07-.95.04-1.47.2-1.81.34-.46.18-.78.39-1.13.74-.35.35-.56.67-.74 1.13-.14.34-.3.86-.34 1.81-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.04.95.2 1.47.34 1.81.18.46.39.78.74 1.13.35.35.67.56 1.13.74.34.14.86.3 1.81.34 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c.95-.04 1.47-.2 1.81-.34.46-.18.78-.39 1.13-.74.35-.35.56-.67.74-1.13.14-.34.3-.86.34-1.81.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.04-.95-.2-1.47-.34-1.81a3.2 3.2 0 0 0-.74-1.13 3.2 3.2 0 0 0-1.13-.74c-.34-.14-.86-.3-1.81-.34-1.24-.06-1.59-.07-4.74-.07zm0 3.37a4.49 4.49 0 1 1 0 8.98 4.49 4.49 0 0 1 0-8.98zm0 7.4a2.91 2.91 0 1 0 0-5.82 2.91 2.91 0 0 0 0 5.82zm5.72-7.6a1.05 1.05 0 1 1-2.1 0 1.05 1.05 0 0 1 2.1 0z"/></svg>',
@@ -403,10 +418,11 @@ def rodape(cfg: dict) -> str:
     <div class="rodape__grade">
       <div>
         <a class="marca" href="/" aria-label="{e(cfg['marca']['nome'])}">
-          {SVG_SELO}
+          {SVG_SELO_RODAPE}
           <span class="marca__txt"><span class="marca__nome">{e(cfg['marca']['nome'])}</span>
           <span class="marca__sub">Imóveis Rurais</span></span>
         </a>
+        {f'<p class="rodape__tagline">{e(cfg["marca"]["tagline"])}</p>' if preenchido(cfg['marca'].get('tagline')) else ''}
         <p class="rodape__sobre">{e(rod.get('sobre_curto', ''))}</p>
         {redes}
       </div>
@@ -472,7 +488,7 @@ def pagina(cfg: dict, *, titulo: str, descricao: str, url: str, corpo: str,
 <meta name="description" content="{e(descricao)}">
 <link rel="canonical" href="{e(canonica)}">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#0F2419">
+<meta name="theme-color" content="#0C1E33">
 <meta property="og:type" content="{e(og_tipo)}">
 <meta property="og:site_name" content="{e(cfg['marca']['nome'])}">
 <meta property="og:title" content="{e(titulo)}">
@@ -485,7 +501,7 @@ def pagina(cfg: dict, *, titulo: str, descricao: str, url: str, corpo: str,
 <link rel="apple-touch-icon" href="/assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/estilo.css">
 {ld}
 {ga}
@@ -748,7 +764,7 @@ def gerar_home(cfg, pag, imoveis, posts, dados_agro, depoimentos) -> str:
     if pubs:
         cards_dep = "".join(
             f'<article class="card"><p style="font-family:var(--fonte-display);font-size:1.1rem;'
-            f'color:var(--verde-800);margin-bottom:1.2rem">“{e(d["texto"])}”</p>'
+            f'color:var(--azul-800);margin-bottom:1.2rem">“{e(d["texto"])}”</p>'
             f'<p><strong>{e(d["nome"])}</strong>'
             + (f'<br><span style="font-size:.88rem;color:var(--tinta-suave)">{e(d.get("cargo", ""))}</span>'
                if d.get("cargo") else "")
@@ -1376,12 +1392,15 @@ def gerar_404(cfg) -> str:
                   url="/404.html", corpo="\n".join(corpo))
 
 
-FAVICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-<rect width="40" height="40" rx="6" fill="#0F2419"/>
-<path d="M20 9c0 6-4.6 9.4-4.6 14.2 0 3 2.1 5.2 4.6 5.2s4.6-2.2 4.6-5.2C24.6 18.4 20 15 20 9z" fill="#C29B3C"/>
-<path d="M13 31h14" stroke="#C29B3C" stroke-width="1.6" stroke-linecap="round"/>
-</svg>
-"""
+FAVICON = (
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">'
+    '<rect width="128" height="128" rx="20" fill="#0C1E33"/>'
+    + svg_marca(classe="", tam=128, ident="fav")
+    .replace('<svg class="" width="128" height="128" ', "<svg ")
+    .replace('viewBox="0 0 128 128">', 'viewBox="0 0 128 128" x="0" y="0" width="128" height="128">')
+    .replace('fill="currentColor"', 'fill="#C9A44C"')
+    + "</svg>"
+)
 
 HTACCESS = """# Prime Fazendas — configuração de servidor (Apache / Hostinger)
 

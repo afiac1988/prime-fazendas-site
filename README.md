@@ -20,6 +20,39 @@ hospedado na Hostinger.
 
 ---
 
+## A marca
+
+A identidade vem do logotipo original (`conteudo/midia/geral/marca-original/`):
+**sol dourado sobre os sulcos do plantio**, wordmark em capitulares romanas,
+azul-marinho e dourado.
+
+| Elemento | Valor |
+|---|---|
+| Azul-marinho | `#0C1E33` (fundo) · `#1A3C5E` (ação) |
+| Dourado | `#C9A44C` |
+| Wordmark | Cinzel (equivalente livre do Trajan do logotipo) |
+| Títulos | Fraunces |
+| Texto | Inter |
+| Assinatura | *A terra é o único investimento onde o tempo trabalha por você.* |
+
+> O documento de estrutura sugeria verde e marrom, mas o logotipo real da
+> empresa é azul e dourado. A marca existente venceu a sugestão do rascunho.
+
+O símbolo foi **redesenhado em vetor**. A geometria vive em
+`ferramentas/gerar_og.py` e é a fonte única de verdade: o script emite tanto
+`tema/assets/marca.svg` (usado no cabeçalho, rodapé e favicon) quanto
+`tema/assets/og-prime-fazendas.png` (a miniatura do WhatsApp/LinkedIn). Assim o
+logo do site e o do compartilhamento nunca divergem.
+
+```powershell
+python ferramentas/gerar_og.py     # só quando a marca mudar
+```
+
+Esse é o único script que usa Pillow. O build do site continua sem dependência
+nenhuma.
+
+---
+
 ## Os três comandos
 
 ```powershell
@@ -50,8 +83,14 @@ prime-fazendas-website/
 │       ├── imoveis/<slug>/
 │       └── geral/
 │
-├── tema/assets/                 ← aparência (CSS e JS)
-├── build.py                     ← o gerador
+├── tema/assets/                 ← aparência
+│   ├── estilo.css                 paleta e layout
+│   ├── site.js                    menu, filtros, formulário
+│   ├── marca.svg                  símbolo vetorial (GERADO)
+│   └── og-prime-fazendas.png      miniatura de compartilhamento (GERADO)
+│
+├── ferramentas/gerar_og.py      ← gera a marca e a miniatura
+├── build.py                     ← o gerador do site
 ├── ver.ps1                      ← preview local
 ├── publicar.ps1                 ← publicação
 ├── deploy.exemplo.json          ← modelo de credenciais
