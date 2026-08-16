@@ -1,0 +1,11 @@
+node_modules/
+.git
+VERSOES/
+AUTONOMO/
+*.bat
+*.ps1
+*.md
+.env
+.env.local
+.DS_Store
+Thumbs.db
