@@ -1,26 +1,9 @@
 {
-  "buildCommand": "echo 'Build completed - site folder is pre-built'",
+  "buildCommand": "echo 'Build completed - site folder is ready'",
   "outputDirectory": "site",
   "public": true,
   "github": {
     "enabled": true,
     "silent": false
-  },
-  "env": {},
-  "builds": [
-    {
-      "src": "site/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html",
-      "status": 404
-    }
-  ],
-  "env": {
-    "NODE_ENV": "production"
   }
 }
